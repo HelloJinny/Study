@@ -1,0 +1,139 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+img {
+	display: block;
+	margin: 0px auto;
+}
+
+h1{
+	font-size:2em;
+	padding: 5px;
+	letter-spacing: 1px;          /* 글자 사이의 간격 */
+	line-height:2em
+}
+
+h3{
+	font-size:1.5em;	
+	padding: 5px;
+	letter-spacing: 1px;
+	line-height:2em
+}
+
+li {
+	list-sytle: nono;                 /* 밑줄 없앰 */
+}
+
+a {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+p {
+	font-size:15px;
+	line-height:20px;
+	line-height:2em
+}
+
+dd {
+  display: block;
+  margin-left: 40px;
+  line-height:1.8em
+}
+
+/**************************************************************/
+
+header {
+	width: 100%;
+	background-color: #FFFFFF;
+	padding: 10px;
+}
+
+.logo {
+    height: 180px;
+}
+
+.logo > img { 
+	top: 0;
+	width: auto;
+	height: 180px;
+}
+
+/**************************************************************/
+
+nav {
+	float: right;
+	background: #FFFFFF;
+}
+ 
+nav ul {	
+	background-color: #000000;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+    overflow: hidden; 
+    font-weight: bold;
+}
+
+nav ul li   {
+	display: inline;
+    float: left;                    /* 오른쪽부터 가로 정렬 */
+    margin: 15px;
+}
+
+nav ul li a {
+	background-color: #000000; 
+    text-decoration: none;
+} 
+
+nav ul li a:hover {
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+/**************************************************************/
+
+form {
+	float: left;	
+	width: 100%;
+	border: 3px solid black;
+	padding: 5px;
+	overflow: hidden;
+}
+
+table, td, th {
+	background-color: #EAEAEA;
+}
+
+table {
+	margin: 0 auto;
+	border-collapse: collapse;
+	border-color: balck;
+}
+	
+td {
+	padding: 10px;
+	height: 30px;
+	
+}
+
+/**************************************************************/
+
+footer {
+	clear:both;	
+	width: 100%;
+	height: 50px;
+	padding: 10px;
+	background-color: black;
+	color: white;	
+	text-align: center;
+}

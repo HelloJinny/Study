@@ -1,1 +1,231 @@
+﻿<!--
+1. 아이디 / 비밀번호 확인 입력 기능 추가.(20점)
 
+2. 서버 전송 전, 비밀번호 / 비밀번호 확인 데이터의 일치 여부 기능.(10점)
+     . 일치하지 않을 경우 "비밀번호를 확인하세요." 메세지 출력(alert())
+
+3. 입력 양식에 데이터가 입력되지 않은 경우 데이터 입력 유도 메세지 출력 기능.(20점)
+     . 체크 항목 : 성명, 아이디, 비밀번호/비밀번호 확인, 전화번호
+     .  ex) 이름을 입력하지 않은 경우 : "이름을 입력하세요." 메시지 출력(alert())
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>간단한 회원 정보 입력 양식</title>
+
+<link href="03_Profile.css" rel="stylesheet">
+
+<!-- <script src="03_Profile.js"> </script> -->
+ <script type = "text/javascript">
+ window.onload = function() {
+		document.getElementById('myForm').onsubmit=function() {
+			var output = '';
+			var strGender = '';
+			var strHobby = '';
+					
+			var name = document.getElementById('name').value;
+			var id = document.getElementById('id').value;
+			var pwd = document.getElementById('pwd').value;
+			var pwd_check = document.getElementById('pwd_check').value;
+			var t0 = document.getElementById('t0').value;
+			var t1 = document.getElementById('t1').value;
+			var t2 = document.getElementById('t2').value;
+			var t3 = document.getElementById('t3').value;
+			var job = document.getElementById('job').value;
+			var gender = document.getElementsByName('gender');
+			var hobby = document.getElementsByName('hobby');
+			var memo = document.getElementById('memo').value;
+
+			
+	/* 성별 */	
+			for(var i=0; i<gender.length; i++){
+				if(gender[i].checked == true){
+					if(gender[i].value == "M"){
+						strGender = "남";
+					}else{
+						strGender = "여";
+					}
+				}
+			}
+
+			
+	/* 취미 */
+			for(var i=0; i < hobby.length; i++){
+				if(hobby[i].checked == true){
+					if(hobby[i].value == "1"){
+						strHobby += '바둑  ';
+					}else if(hobby[i].value == "2"){
+						strHobby += '게임  ';
+					}else if(hobby[i].value == "3"){
+						strHobby += '낚시  ';
+					}else if(hobby[i].value == "4"){
+						strHobby += '독서  ';
+					}
+				}
+			}
+
+			
+	/* 공백X */
+				if (name == '') {
+					alert('이름을 입력하세요.') ;
+					return false;                    //  입력이 안되어 있으면 submit 이벤트를 중지
+				}else if(id == '') {
+					alert('아이디를 입력하세요.');
+					return false;
+				}else if(pwd == '') {
+					alert('비밀번호를 입력하세요.');
+					return false;
+				}else if(pwd_check == '') {
+					alert('비밀번호 확인을 입력하세요.')
+					return false;
+				}else if ( /*t1 == '' ||*/ t2 == '' || t3 == '') {
+				  	alert('전화번호를 입력하세요.');
+					return false;
+				}
+				
+	/* 비밀번호 확인 */			
+				if(pwd == pwd_check){
+					alert('회원가입성공');
+				}else{
+					alert('비밀번호를 확인하세요....');
+					return false; // 이미 가지고 있는 이벤트 핸들러 제거됨.
+				}
+								 
+				 output += '성명 : '+name+'\n';
+				 output += '아이디 : '+id+'\n';
+				 output += '비밀번호 : '+pwd+'\n';
+				 output += '전화번호 : ' +t0+ ' ' +t1+  '- '+t2+ '-' +t3+ '\n';
+				 output += '직업 : '+job+'\n';
+				 output += '성별 : '+strGender+'\n';
+				 output += '취미 : '+strHobby+'\n';
+				 output += '자기 소개 : '+memo+'\n';
+							 
+				 alert(output);		
+		};
+	};
+ </script>
+
+</head>
+<body>
+	
+	<div id="wrap">
+       <header> <!-- HTML5 시멘틱 태그 -->
+              <a class ="logo" href="#">
+                  <img src="data:image/jpeg;base64,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" height="150px">              
+              </a>
+        </header>
+        
+        <nav>       <!-- HTML5 시멘틱 태그 -->
+            <ul class="nav-menu">
+                <li><a href="02_menu1.html">애완견 종류</a></li>
+                <li><a href="#">입양하기</a></li>
+                <li><a href="#">건강돌보기</a></li>
+                <li><a href="#">더불어살기</a></li>
+                <li><a href="03_Profile.html">회원 정보</a></li>
+            </ul>
+        </nav>       
+    </div>
+<!------------------------------------------------------------------->	
+	<form action="" id="myForm">
+		<table border="1">
+			<!-- <caption align="center" font-size="15pt"; >간단한 회원 정보 입력 양식</caption> -->
+			<tr>
+				<td colspan="2" align="center">
+					<b>간단한 회원 정보 입력 양식</b>
+				</td>
+			</tr>
+			
+			<tr>
+				<th><font color="#FF0000">*</font> 성명</th>
+				<td>
+					<input type="text" id="name" size="30">
+				</td>
+			</tr>
+			<tr>
+				<th><font color="#FF0000">*</font>아이디</th>
+				<td>
+					<input type="text" id="id" size="30">
+				</td>
+			</tr>
+			<tr>
+				<th><font color="#FF0000">*</font> 비밀번호</th>
+				<td>
+					<input type="password" id="pwd" size="30">
+				</td>
+			</tr>
+			<tr>
+			     <th><font color="#FF0000">*</font> 비밀번호 확인</th>
+			     <td>
+			       	<input type="password" id=pwd_check size="30">
+			     </td>
+			</tr>
+			<tr>
+				<th><font color="#FF0000">*</font> 전화번호</th>
+				<td>
+					<select id="t0">
+						<option>SKT</option>
+						<option>KT</option>
+						<option>LG</option>
+						<option>알뜰폰</option>
+					</select>
+					<!-- <input type="text" id="t1" size="5"> -->
+					<select id="t1">
+						<option>010</option>
+						<option>011</option>
+						<option>016</option>
+						<option>019</option>
+					</select>  -
+					<input type="text" id="t2" size="6"> -
+					<input type="text" id="t3" size="6">
+				</td>
+			</tr>
+			<tr>
+				<th>직업</th>
+				<td>
+					<select id="job" name="job">
+						<option value="학생" SELECTED>학생</option>
+						<option value="직장인">직장인</option>
+						<option value="주부">주부</option>
+						<option value="무직">무직</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				<td>
+					<input type="radio" name="gender" value="M" checked>남
+					<input type="radio" name="gender" value="F">여
+				</td>
+			</tr>
+			<tr>
+				<th>취미</th>
+				<td>
+					<input type="checkbox" name="hobby" value="1">바둑 
+					<input type="checkbox" name="hobby" value="2">게임 
+					<input type="checkbox" name="hobby" value="3">낚시 
+					<input type="checkbox" name="hobby" value="4">독서
+				</td>
+			</tr>
+			<tr>
+				<th>자기 소개</th>
+				<td>
+					<textarea cols="60" rows="4" id="memo" name="memo" placeholder="자기를 소개하는 글을 쓰세요."></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="등록하기"> 
+					<input type="reset" value="초기화">
+				</td>
+			</tr>
+		</table>
+	</form>
+<!------------------------------------------------------------------->	
+	<footer>     <!-- HTML5 시멘틱 태그 -->
+    	<p>Copyright 2012 funnycom</p>
+    </footer>
+
+<body>
+</html>
